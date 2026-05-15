@@ -187,18 +187,21 @@ export default function Home() {
           </div>
 
           <div className="mt-14 max-w-2xl mx-auto p-6 rounded-2xl bg-cream border border-stone-200 text-center">
-            <p className="text-stone-600">
-              Dois olhares complementares para acelerar sua evolução:{" "}
-              <span className="text-ink font-semibold">
-                Desenvolvimento Humano
-              </span>{" "}
-              <span className="text-gold mx-1">+</span>{" "}
-              <span className="text-ink font-semibold">
-                Estratégia de Negócios
-              </span>
-              .
-            </p>
-          </div>
+  <p className="text-stone-600">
+    Dois olhares complementares para acelerar sua evolução:
+    
+    <span className="block text-ink font-semibold mt-2">
+      Desenvolvimento Humano
+    </span>
+
+    <span className="text-gold mx-1">+</span>
+
+    <span className="block text-ink font-semibold">
+      Estratégia de Negócios
+    </span>
+    .
+  </p>
+</div>
         </div>
       </section>
 
