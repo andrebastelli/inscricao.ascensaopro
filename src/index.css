@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-sans antialiased;
+  background-image: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(201, 162, 74, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at -10% 20%,
+      rgba(201, 162, 74, 0.08),
+      transparent 60%
+    );
+}
+
+/* Premium gold text */
+.text-gold-shine {
+  background: linear-gradient(90deg, #8a6b22, #e2c97e, #c9a24a, #e2c97e, #8a6b22);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Premium button */
+.btn-premium {
+  @apply relative inline-flex items-center justify-center w-full py-4 px-6 rounded-xl font-bold uppercase tracking-wider text-white overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, #8a6b22 0%, #c9a24a 50%, #e2c97e 100%);
+  background-size: 200% 200%;
+  box-shadow:
+    0 10px 30px -10px rgba(201, 162, 74, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+.btn-premium:hover::after {
+  transform: translateX(100%);
+}
+.btn-premium:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 40px -10px rgba(201, 162, 74, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-premium:disabled {
+  background: #d6cfc1;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-premium:disabled::after {
+  display: none;
+}
+
+.input-premium {
+  @apply w-full px-5 py-4 rounded-xl bg-white border border-stone-200 text-ink placeholder:text-stone-400 transition-all duration-200 focus:outline-none focus:border-gold focus:ring-4 focus:ring-gold/15;
+}
+
+/* Card with subtle gold border */
+.card-glass {
+  @apply bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-stone-200/70;
+}
+
+.section {
+  @apply px-6 py-20 md:py-28;
+}
+
+.divider-gold {
+  @apply mx-auto h-[2px] w-16 my-6 bg-gold-gradient rounded-full;
+}
