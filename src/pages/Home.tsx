@@ -186,21 +186,40 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-14 max-w-2xl mx-auto p-6 rounded-2xl bg-cream border border-stone-200 text-center">
-  <p className="text-stone-600">
+          <div className="mt-14 max-w-3xl mx-auto p-6 rounded-2xl bg-cream border border-stone-200 text-center">
+  
+  <p className="text-stone-600 mb-6">
     Dois olhares complementares para acelerar sua evolução:
-    
-    <span className="block text-ink font-semibold mt-2">
-      Desenvolvimento Humano
-    </span>
-
-    <span className="text-gold mx-1">+</span>
-
-    <span className="block text-ink font-semibold">
-      Estratégia de Negócios
-    </span>
-    .
   </p>
+
+  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+    
+    {/* BLOCO 1 */}
+    <div className="flex flex-col items-center max-w-xs">
+      <span className="text-ink font-semibold text-lg">
+        Desenvolvimento Humano
+      </span>
+      <span className="text-stone-500 text-sm mt-1">
+        Autoconhecimento e transformação
+      </span>
+    </div>
+
+    {/* + */}
+    <div className="text-gold text-2xl font-semibold">
+      +
+    </div>
+
+    {/* BLOCO 2 */}
+    <div className="flex flex-col items-center max-w-xs">
+      <span className="text-ink font-semibold text-lg">
+        Estratégia de Negócios
+      </span>
+      <span className="text-stone-500 text-sm mt-1">
+        Planejamento e execução prática
+      </span>
+    </div>
+
+  </div>
 </div>
         </div>
       </section>
