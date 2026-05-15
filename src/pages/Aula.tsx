@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const VIDEO_URL =
-  "https://drive.google.com/file/d/1bvNl-cbUbT0nOAi-bXs8I7Qzx8rlBXXi/preview";
+  "https://www.youtube.com/embed/TuRcOmk8ZRs?autoplay=1";
 
 export default function Aula() {
   return (

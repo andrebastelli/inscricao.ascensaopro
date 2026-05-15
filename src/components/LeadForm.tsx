@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validateFormData } from "../utils/validateForm";
 
 const WEBHOOK = import.meta.env.VITE_FORM_WEBHOOK_URL as string | undefined;
 const REDIRECT = (import.meta.env.VITE_REDIRECT_URL as string) || "/aula";
@@ -18,20 +19,28 @@ export default function LeadForm() {
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
   const navigate = useNavigate();
-
-  const valid = useMemo(
-    () =>
-      nome.trim().length > 1 &&
-      /\S+@\S+\.\S+/.test(email) &&
-      telefone.replace(/\D/g, "").length >= 10,
-    [nome, email, telefone]
-  );
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!valid || loading) return;
+    if (loading) return;
+
+    // Validar dados usando a função de validação
+    const validationErrors = validateFormData({
+      nome,
+      email,
+      whatsapp: telefone,
+    });
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors([]);
     setLoading(true);
+
     try {
       if (WEBHOOK) {
         await fetch(WEBHOOK, {
@@ -47,6 +56,15 @@ export default function LeadForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      {errors.length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+          <ul className="text-red-700 text-sm space-y-1">
+            {errors.map((error, idx) => (
+              <li key={idx}>• {error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <input
         className="input-premium"
         type="text"
@@ -73,7 +91,7 @@ export default function LeadForm() {
       />
       <button
         type="submit"
-        disabled={!valid || loading}
+        disabled={loading}
         className="btn-premium"
       >
         {loading ? "Liberando acesso..." : "Assistir a aula"}
